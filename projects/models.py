@@ -4,7 +4,7 @@ from django.urls import reverse
 
 # Create your models here.
 class ProjectModel(models.Model):
-    name = models.CharField(max_length=265, null=False)
+    name = models.CharField(max_length=265, null=False, unique=True)
     languages = models.ManyToManyField("Language", related_name="languages")
     technologies = models.ManyToManyField("Technology", related_name="technologies")
     description = models.TextField(null=False)
@@ -15,7 +15,7 @@ class ProjectModel(models.Model):
 
 
 class Language(models.Model):
-    name= models.CharField(_(""), max_length=50, blank=False, null=False)
+    name= models.CharField(_(""), max_length=50, blank=False, null=False, unique=True)
     logo = models.ImageField( blank=True, upload_to="Language_Images")
 
     class Meta:
@@ -29,7 +29,7 @@ class Language(models.Model):
         return reverse("Language_detail", kwargs={"pk": self.pk})
 
 class Technology(models.Model):
-    name = models.CharField(_(""), max_length=50, null=False)
+    name = models.CharField(_(""), max_length=50, null=False, unique=True)
     logo = models.ImageField( blank=True, upload_to="Tech_Images")
 
 
