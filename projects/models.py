@@ -1,14 +1,23 @@
 from django.db import models
 from django.utils.translation import gettext as _
+from django.urls import reverse
 
 # Create your models here.
 class ProjectModel(models.Model):
-    name = models.CharField(max_length=265, blank=False, null=False)
-    languages = models.ManyToManyField("Language", verbose_name=_(""))
-    technologies = models.ManyToManyField("Technology", verbose_name=_(""))
+    name = models.CharField(max_length=265, null=False)
+    languages = models.ManyToManyField("Language", related_name="languages")
+    technologies = models.ManyToManyField("Technology", related_name="technologies")
+    description = models.TextField(null=False)
+    image = models.ImageField( blank=True, upload_to="Project_Images")
+
+    def __str__(self):
+        return self.name
+
 
 class Language(models.Model):
     name= models.CharField(_(""), max_length=50, blank=False, null=False)
+    logo = models.ImageField( blank=True, upload_to="Language_Images")
+
     class Meta:
         verbose_name = _("Language")
         verbose_name_plural = _("Languages")
@@ -20,7 +29,9 @@ class Language(models.Model):
         return reverse("Language_detail", kwargs={"pk": self.pk})
 
 class Technology(models.Model):
-    name = models.CharField(_(""), max_length=50, blank=False, null=False)
+    name = models.CharField(_(""), max_length=50, null=False)
+    logo = models.ImageField( blank=True, upload_to="Tech_Images")
+
 
     class Meta:
         verbose_name = _("Technology")
