@@ -8,6 +8,8 @@ django = "*"
 psycopg2-binary = "*"
 ipython = "*"
 pillow = "*"
+python-decouple = "*"
+django-cors = "*"
 
 [dev-packages]
 

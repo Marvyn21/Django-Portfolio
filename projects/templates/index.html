@@ -764,7 +764,7 @@
 								class="col col-d-6 col-t-6 col-m-12 grid-item design {{project.style}} border-line-h">
 								<div class="box-item">
 									<div class="image">
-										<a href="#popup-2" class="has-popup-media">
+										<a href="#popup-{{project.id}}" class="has-popup-media">
 											<img src="{{project.image.url}}" alt="" />
 											<span class="info">
 												<span class="ion ion-images"></span>
@@ -772,13 +772,13 @@
 										</a>
 									</div>
 									<div class="desc">
-										<a href="#popup-2"
+										<a href="#popup-{{project.id}}"
 											class="name has-popup-media">{{project.name}}</a>
 										{%for language in project.languages.all%}
 										<div class="category">{{language}}</div>
 										{%endfor%}
 									</div>
-									<div id="popup-2" class="popup-box mfp-fade mfp-hide">
+									<div id="popup-{{project.id}}" class="popup-box mfp-fade mfp-hide">
 										<div class="content">
 											<div class="image">
 												<img src="{{project.image.url}}" alt="">

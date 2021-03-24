@@ -9,6 +9,8 @@ class ProjectModel(models.Model):
     technologies = models.ManyToManyField("Technology", related_name="technologies")
     description = models.TextField(null=False)
     image = models.ImageField( blank=True, upload_to="Project_Images")
+    link_to_code = models.CharField("link To code", max_length=100, null=True)
+    link_to_project = models.CharField("Link to project", max_length=100, null=True)
 
     def __str__(self):
         return self.name
