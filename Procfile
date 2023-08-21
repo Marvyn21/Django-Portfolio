@@ -1,1 +1,1 @@
-web: gunicorn 'marvyn-kiplagat.wsgi'
+web: gunicorn 'config.wsgi'
